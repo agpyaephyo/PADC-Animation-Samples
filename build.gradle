@@ -21,3 +21,15 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+def verySensitiveDataProperties = loadVerySensitiveData()
+
+ext {
+    verySensitiveData = verySensitiveDataProperties.getProperty('VERY_SENSITIVE_DATA')
+}
+
+def loadVerySensitiveData() {
+    Properties verySensitiveDataProperties = new Properties();
+    verySensitiveDataProperties.load(project.rootProject.file('very_sensitive_data.properties').newDataInputStream())
+    return verySensitiveDataProperties;
+}

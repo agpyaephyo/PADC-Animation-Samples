@@ -96,10 +96,24 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_app_version"
+            android:id="@+id/tv_sensitive_data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:background="@color/primary"
+            android:fontFamily="sans-serif-light"
+            android:gravity="right|end"
+            android:padding="@dimen/margin_medium"
+            android:textColor="@color/white_full"
+            android:textSize="@dimen/text_regular"
+            android:text="Super Sensitive Data"
+            />
+
+        <TextView
+            android:id="@+id/tv_app_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tv_sensitive_data"
             android:background="@color/primary"
             android:fontFamily="sans-serif-light"
             android:gravity="right|end"

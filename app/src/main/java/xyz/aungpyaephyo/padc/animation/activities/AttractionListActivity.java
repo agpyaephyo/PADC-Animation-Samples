@@ -32,6 +32,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import xyz.aungpyaephyo.padc.animation.BuildConfig;
 import xyz.aungpyaephyo.padc.animation.R;
 import xyz.aungpyaephyo.padc.animation.adapters.AttractionsAdapter;
 import xyz.aungpyaephyo.padc.animation.components.rvset.SmartRecyclerView;
@@ -74,6 +75,9 @@ public class AttractionListActivity extends AppCompatActivity
     @BindView(R.id.tv_animation_set_two)
     TextView tvAnimationSetTwo;
 
+    @BindView(R.id.tv_sensitive_data)
+    TextView tvSensitiveData;
+
     private AttractionsAdapter mAttractionsAdapter;
 
     private float mWidthPx, mHeightPx;
@@ -99,6 +103,8 @@ public class AttractionListActivity extends AppCompatActivity
         initUserDataPosition();
 
         tvAttractions.setSelected(true);
+
+        tvSensitiveData.setText(BuildConfig.VERY_SENSITIVE_DATA);
     }
 
     @Override
