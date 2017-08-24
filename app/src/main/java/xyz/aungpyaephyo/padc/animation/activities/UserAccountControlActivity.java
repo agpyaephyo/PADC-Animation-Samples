@@ -46,6 +46,7 @@ public class UserAccountControlActivity extends AppCompatActivity
             getSupportFragmentManager().popBackStack(LoginFragment.TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         } else {
             getSupportFragmentManager().beginTransaction()
+                    //.setCustomAnimations(R.anim.enter, R.anim.slide_to_up, R.anim.slide_to_down, R.anim.pop_exit)
                     .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
                     .replace(R.id.fl_container, RegisterFragment.newInstance(), RegisterFragment.TAG)
                     .addToBackStack(RegisterFragment.TAG)
@@ -61,6 +62,7 @@ public class UserAccountControlActivity extends AppCompatActivity
             getSupportFragmentManager().popBackStack(RegisterFragment.TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         } else {
             getSupportFragmentManager().beginTransaction()
+                    //.setCustomAnimations(R.anim.slide_to_down, R.anim.pop_exit, R.anim.enter, R.anim.slide_to_up)
                     .setCustomAnimations(R.anim.pop_enter, R.anim.pop_exit, R.anim.enter, R.anim.exit)
                     .replace(R.id.fl_container, LoginFragment.newInstance(), LoginFragment.TAG)
                     .addToBackStack(LoginFragment.TAG)
