@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list 
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:oneshot="false"
+    >
+    
+    <item
+	    android:drawable="@drawable/gyroscope1"
+	    android:duration="100"/>
+	<item
+	    android:drawable="@drawable/gyroscope2"
+	    android:duration="100"/>
+	<item
+	    android:drawable="@drawable/gyroscope3"
+	    android:duration="100"/>
+	<item
+	    android:drawable="@drawable/gyroscope4"
+	    android:duration="100"/>
+	<item
+	    android:drawable="@drawable/gyroscope5"
+	    android:duration="100"/>
+	<item
+	    android:drawable="@drawable/gyroscope6"
+	    android:duration="100"/>
+	<item
+	    android:drawable="@drawable/gyroscope7"
+	    android:duration="100"/>
+	<item
+	    android:drawable="@drawable/gyroscope8"
+	    android:duration="100"/>
+	<item
+	    android:drawable="@drawable/gyroscope9"
+	    android:duration="100"/>
+	<item
+	    android:drawable="@drawable/gyroscope10"
+	    android:duration="100"/>
+
+</animation-list>
