@@ -69,12 +69,6 @@ public class AttractionListActivity extends AppCompatActivity
     @BindView(R.id.tv_drawable_animation)
     TextView tvDrawableAnimation;
 
-    @BindView(R.id.tv_animation_set_one)
-    TextView tvAnimationSetOne;
-
-    @BindView(R.id.tv_animation_set_two)
-    TextView tvAnimationSetTwo;
-
     @BindView(R.id.tv_sensitive_data)
     TextView tvSensitiveData;
 
@@ -109,9 +103,11 @@ public class AttractionListActivity extends AppCompatActivity
 
         tvSensitiveData.setText(BuildConfig.VERY_SENSITIVE_DATA);
 
-        String appName = getResources().getString(R.string.app_name);
+        String appName = getResources().getString(R.string.app_name_short);
         tvAppVersion.setText(getResources().getString(R.string.format_app_version,
-                appName, BuildConfig.VERSION_NAME));
+                appName,
+                BuildConfig.APP_BUILD_TYPE,
+                BuildConfig.VERSION_NAME));
     }
 
     @Override
@@ -197,38 +193,6 @@ public class AttractionListActivity extends AppCompatActivity
             @Override
             public void onFinishHideUserData() {
                 Intent intent = DrawableAnimationActivity.newIntent(getApplicationContext());
-                startActivity(intent);
-
-                resetMenu();
-                tvAttractions.setSelected(true);
-            }
-        });
-    }
-
-    @OnClick(R.id.tv_animation_set_one)
-    public void onTapMenuAnimationSetOne(View view) {
-        resetMenu();
-        tvAnimationSetOne.setSelected(true);
-        hideUserData(new UserDataAnimListener() {
-            @Override
-            public void onFinishHideUserData() {
-                Intent intent = AnimationSetOneActivity.newIntent(getApplicationContext());
-                startActivity(intent);
-
-                resetMenu();
-                tvAttractions.setSelected(true);
-            }
-        });
-    }
-
-    @OnClick(R.id.tv_animation_set_two)
-    public void onTapMenuAnimationSetTwo(View view) {
-        resetMenu();
-        tvAnimationSetTwo.setSelected(true);
-        hideUserData(new UserDataAnimListener() {
-            @Override
-            public void onFinishHideUserData() {
-                Intent intent = AnimationSetTwoActivity.newIntent(getApplicationContext());
                 startActivity(intent);
 
                 resetMenu();
@@ -335,8 +299,6 @@ public class AttractionListActivity extends AppCompatActivity
     private void resetMenu() {
         tvAttractions.setSelected(false);
         tvDrawableAnimation.setSelected(false);
-        tvAnimationSetOne.setSelected(false);
-        tvAnimationSetTwo.setSelected(false);
     }
 
     public interface UserDataAnimListener {

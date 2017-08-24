@@ -43,6 +43,29 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+
+        def BUILD_TYPE_FIELD = "APP_BUILD_TYPE";
+        def BUILD_TYPE_PROD = "\"P\"";
+        def BUILD_TYPE_STAGING = "\"S\"";
+        def BUILD_TYPE_DEV = "\"D\"";
+
+        production {
+            applicationId = "xyz.aungpyaephyo.padc.animation"
+            buildConfigField "String", BUILD_TYPE_FIELD, BUILD_TYPE_PROD
+        }
+
+        staging {
+            applicationId = "xyz.aungpyaephyo.padc.animation.staging"
+            buildConfigField "String", BUILD_TYPE_FIELD, BUILD_TYPE_STAGING
+        }
+
+        development {
+            applicationId = "xyz.aungpyaephyo.padc.animation.production"
+            buildConfigField "String", BUILD_TYPE_FIELD, BUILD_TYPE_DEV
+        }
+    }
 }
 
 dependencies {
