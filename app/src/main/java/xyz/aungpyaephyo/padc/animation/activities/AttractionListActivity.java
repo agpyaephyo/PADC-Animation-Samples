@@ -78,6 +78,9 @@ public class AttractionListActivity extends AppCompatActivity
     @BindView(R.id.tv_sensitive_data)
     TextView tvSensitiveData;
 
+    @BindView(R.id.tv_app_version)
+    TextView tvAppVersion;
+
     private AttractionsAdapter mAttractionsAdapter;
 
     private float mWidthPx, mHeightPx;
@@ -105,6 +108,10 @@ public class AttractionListActivity extends AppCompatActivity
         tvAttractions.setSelected(true);
 
         tvSensitiveData.setText(BuildConfig.VERY_SENSITIVE_DATA);
+
+        String appName = getResources().getString(R.string.app_name);
+        tvAppVersion.setText(getResources().getString(R.string.format_app_version,
+                appName, BuildConfig.VERSION_NAME));
     }
 
     @Override

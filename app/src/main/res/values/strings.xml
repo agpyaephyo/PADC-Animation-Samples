@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="http://schemas.android.com/tools">
     <string name="app_name">PADC-Animation-Samples</string>
     <string name="action_user_account">User Account</string>
 
@@ -24,4 +24,6 @@ Donec scelerisque dui ac imperdiet tempus. Lorem ipsum dolor sit amet, consectet
     <string name="lbl_register_action">Register</string>
     <string name="lbl_logout">Logout</string>
     <string name="lbl_login">Login</string>
+
+    <string name="format_app_version"><xliff:g id="app_name">%1$s</xliff:g> v<xliff:g id="version_number">%2$s</xliff:g></string>
 </resources>
