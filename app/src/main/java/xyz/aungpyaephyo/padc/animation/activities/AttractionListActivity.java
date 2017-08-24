@@ -68,6 +68,12 @@ public class AttractionListActivity extends AppCompatActivity
     @BindView(R.id.tv_drawable_animation)
     TextView tvDrawableAnimation;
 
+    @BindView(R.id.tv_animation_set_one)
+    TextView tvAnimationSetOne;
+
+    @BindView(R.id.tv_animation_set_two)
+    TextView tvAnimationSetTwo;
+
     private AttractionsAdapter mAttractionsAdapter;
 
     private float mWidthPx, mHeightPx;
@@ -186,6 +192,38 @@ public class AttractionListActivity extends AppCompatActivity
         });
     }
 
+    @OnClick(R.id.tv_animation_set_one)
+    public void onTapMenuAnimationSetOne(View view) {
+        resetMenu();
+        tvAnimationSetOne.setSelected(true);
+        hideUserData(new UserDataAnimListener() {
+            @Override
+            public void onFinishHideUserData() {
+                Intent intent = AnimationSetOneActivity.newIntent(getApplicationContext());
+                startActivity(intent);
+
+                resetMenu();
+                tvAttractions.setSelected(true);
+            }
+        });
+    }
+
+    @OnClick(R.id.tv_animation_set_two)
+    public void onTapMenuAnimationSetTwo(View view) {
+        resetMenu();
+        tvAnimationSetTwo.setSelected(true);
+        hideUserData(new UserDataAnimListener() {
+            @Override
+            public void onFinishHideUserData() {
+                Intent intent = AnimationSetTwoActivity.newIntent(getApplicationContext());
+                startActivity(intent);
+
+                resetMenu();
+                tvAttractions.setSelected(true);
+            }
+        });
+    }
+
     @OnClick(R.id.vp_user_data)
     public void onTapUserData(View view) {
         hideUserData();
@@ -284,6 +322,8 @@ public class AttractionListActivity extends AppCompatActivity
     private void resetMenu() {
         tvAttractions.setSelected(false);
         tvDrawableAnimation.setSelected(false);
+        tvAnimationSetOne.setSelected(false);
+        tvAnimationSetTwo.setSelected(false);
     }
 
     public interface UserDataAnimListener {

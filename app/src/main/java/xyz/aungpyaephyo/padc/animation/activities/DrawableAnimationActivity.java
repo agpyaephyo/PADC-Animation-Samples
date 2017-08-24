@@ -21,9 +21,6 @@ import xyz.aungpyaephyo.padc.animation.R;
 
 public class DrawableAnimationActivity extends AppCompatActivity {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-
     @BindView(R.id.iv_gyro)
     ImageView ivGyro;
 
@@ -38,7 +35,6 @@ public class DrawableAnimationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_drawable_animation);
         ButterKnife.bind(this, this);
 
-        setSupportActionBar(toolbar);
     }
 
     @OnClick(R.id.btn_animate_drawable)
