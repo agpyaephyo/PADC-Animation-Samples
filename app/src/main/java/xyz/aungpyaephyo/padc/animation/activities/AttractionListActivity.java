@@ -99,12 +99,6 @@ public class AttractionListActivity extends AppCompatActivity
         EventBus.getDefault().unregister(this);
     }
 
-    @OnClick(R.id.fab)
-    public void onTapFab(View view) {
-        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
-    }
-
     @Override
     public void onTapAttraction(AttractionVO attraction, ImageView ivAttraction) {
         Intent intent = AttractionDetailsActivity.newIntent(getApplicationContext(), attraction);
