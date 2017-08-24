@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:padding="@dimen/margin_medium">
 
     <TextView
@@ -16,10 +15,19 @@
         android:layout_gravity="left"
         />
 
+    <xyz.aungpyaephyo.padc.animation.components.loveanim.LoveAnimView
+        android:id="@+id/v_attraction_love"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_love_border_24dp"
+        />
+
     <ImageView
         android:id="@+id/iv_attraction"
         android:layout_width="match_parent"
         android:layout_height="120dp"
+        android:layout_below="@id/v_attraction_love"
         android:src="@drawable/sample_attraction_thumbnail"
         android:layout_marginTop="@dimen/margin_small"
         android:scaleType="centerCrop"
@@ -37,6 +45,7 @@
         android:layout_marginTop="@dimen/margin_small"
         android:textSize="@dimen/text_regular"
         android:textColor="@color/primary_text"
+        android:layout_below="@id/iv_attraction"
         />
 
-</LinearLayout>
+</RelativeLayout>
