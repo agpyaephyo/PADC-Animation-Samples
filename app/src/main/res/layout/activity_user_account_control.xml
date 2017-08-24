@@ -21,26 +21,10 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh_layout"
+    <FrameLayout
+        android:id="@+id/fl_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <xyz.aungpyaephyo.padc.animation.components.rvset.SmartRecyclerView
-            android:id="@+id/rv_attractions"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:padding="@dimen/margin_card_medium"
-            android:scrollbarStyle="outsideOverlay" />
-
-    </android.support.v4.widget.SwipeRefreshLayout>
-
-    <include
-        android:id="@+id/vp_empty_attractions"
-        layout="@layout/view_pod_empty"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </android.support.design.widget.CoordinatorLayout>

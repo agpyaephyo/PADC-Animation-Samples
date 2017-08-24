@@ -14,4 +14,12 @@ Donec luctus et metus in consequat. Aliquam odio erat, condimentum sit amet turp
 Donec scelerisque dui ac imperdiet tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer placerat maximus luctus. Integer nec maximus orci, sed eleifend lorem. Morbi egestas, mi at tristique volutpat, nisl quam euismod justo, eget tempus lectus enim non mauris. Pellentesque vel quam et risus condimentum consequat vel sit amet elit. Nullam at finibus nibh. Donec ultrices lectus nibh, non placerat purus fringilla sed. Fusce massa nisi, dignissim sed mauris et, tempor hendrerit sem. Nunc tempus massa et quam suscipit scelerisque. Donec vel sagittis nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
 
     <string name="detail_transition_name" translatable="false">TN-Attraction-Image</string>
+
+    <string name="hint_phone_no">Your phone no (0912345678)</string>
+    <string name="hint_password">Your password</string>
+    <string name="lbl_login_action">Login</string>
+    <string name="hint_name">Your Name (Aung Aung)</string>
+    <string name="msg_date_of_birth">Date of Birth</string>
+    <string name="msg_select_your_current_residing_country">Select your resident country</string>
+    <string name="lbl_register_action">Register</string>
 </resources>
