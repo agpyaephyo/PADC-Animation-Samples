@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="xyz.aungpyaephyo.padc.animation.activities.AttractionListActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_sky"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/sky" />
+
+        <ImageView
+            android:id="@+id/iv_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/sun" />
+
+        <ImageView
+            android:id="@+id/iv_grass"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/grass" />
+
+        <ImageView
+            android:id="@+id/iv_clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btn_animate_scene_one"
+            android:layout_alignParentRight="true"
+            android:padding="10dp"
+            android:src="@drawable/clock" />
+
+        <ImageView
+            android:id="@+id/iv_hourHand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btn_animate_scene_one"
+            android:layout_alignParentRight="true"
+            android:padding="10dp"
+            android:src="@drawable/hour_hand" />
+
+        <Button
+            android:id="@+id/btn_animate_scene_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/margin_medium_2"
+            android:layout_marginLeft="@dimen/margin_medium_2"
+            android:layout_marginRight="@dimen/margin_medium_2"
+            android:text="Start Scene One" />
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

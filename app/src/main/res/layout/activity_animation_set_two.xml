@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="xyz.aungpyaephyo.padc.animation.activities.AttractionListActivity">
+
+    <RelativeLayout
+        android:id="@+id/car_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="100dp"
+            android:paddingTop="45dp"
+            android:src="@drawable/sun" />
+
+        <ImageView
+            android:id="@+id/iv_cloud1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="170dp"
+            android:paddingTop="70dp"
+            android:src="@drawable/cloud" />
+
+        <ImageView
+            android:id="@+id/iv_cloud2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="200dp"
+            android:paddingTop="90dp"
+            android:src="@drawable/cloud" />
+
+        <ImageView
+            android:id="@+id/iv_ground"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_alignParentBottom="true"
+            android:padding="40dp"
+            android:src="@drawable/ground" />
+
+        <ImageView
+            android:id="@+id/iv_window"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/window" />
+
+        <ImageView
+            android:id="@+id/iv_steerWheel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btn_animate_scene_two"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/margin_medium_2"
+            android:src="@drawable/steering_wheel" />
+
+        <Button
+            android:id="@+id/btn_animate_scene_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/margin_medium_2"
+            android:layout_marginLeft="@dimen/margin_medium_2"
+            android:layout_marginRight="@dimen/margin_medium_2"
+            android:text="Start Scene Two" />
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

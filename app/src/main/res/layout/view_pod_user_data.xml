@@ -63,6 +63,36 @@
                 android:layout_marginTop="@dimen/margin_small"
                 />
 
+            <TextView
+                android:id="@+id/tv_animation_set_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/state_menu_item_background"
+                android:fontFamily="sans-serif-condensed"
+                android:padding="@dimen/margin_medium"
+                android:textColor="@drawable/state_menu_item_text_color"
+                android:textSize="@dimen/text_regular"
+                android:text="Animation Set 1 (View)"
+                android:foreground="@drawable/ripple_white"
+                android:clickable="true"
+                android:layout_marginTop="@dimen/margin_small"
+                />
+
+            <TextView
+                android:id="@+id/tv_animation_set_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/state_menu_item_background"
+                android:fontFamily="sans-serif-condensed"
+                android:padding="@dimen/margin_medium"
+                android:textColor="@drawable/state_menu_item_text_color"
+                android:textSize="@dimen/text_regular"
+                android:text="Animation Set 2 (Property)"
+                android:foreground="@drawable/ripple_white"
+                android:clickable="true"
+                android:layout_marginTop="@dimen/margin_small"
+                />
+
         </LinearLayout>
 
         <TextView
