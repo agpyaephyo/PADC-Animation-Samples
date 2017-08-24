@@ -32,6 +32,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import xyz.aungpyaephyo.padc.animation.BuildConfig;
 import xyz.aungpyaephyo.padc.animation.R;
 import xyz.aungpyaephyo.padc.animation.adapters.AttractionsAdapter;
 import xyz.aungpyaephyo.padc.animation.components.rvset.SmartRecyclerView;
@@ -68,11 +69,11 @@ public class AttractionListActivity extends AppCompatActivity
     @BindView(R.id.tv_drawable_animation)
     TextView tvDrawableAnimation;
 
-    @BindView(R.id.tv_animation_set_one)
-    TextView tvAnimationSetOne;
+    @BindView(R.id.tv_sensitive_data)
+    TextView tvSensitiveData;
 
-    @BindView(R.id.tv_animation_set_two)
-    TextView tvAnimationSetTwo;
+    @BindView(R.id.tv_app_version)
+    TextView tvAppVersion;
 
     private AttractionsAdapter mAttractionsAdapter;
 
@@ -99,6 +100,14 @@ public class AttractionListActivity extends AppCompatActivity
         initUserDataPosition();
 
         tvAttractions.setSelected(true);
+
+        tvSensitiveData.setText(BuildConfig.VERY_SENSITIVE_DATA);
+
+        String appName = getResources().getString(R.string.app_name_short);
+        tvAppVersion.setText(getResources().getString(R.string.format_app_version,
+                appName,
+                BuildConfig.APP_BUILD_TYPE,
+                BuildConfig.VERSION_NAME));
     }
 
     @Override
@@ -184,38 +193,6 @@ public class AttractionListActivity extends AppCompatActivity
             @Override
             public void onFinishHideUserData() {
                 Intent intent = DrawableAnimationActivity.newIntent(getApplicationContext());
-                startActivity(intent);
-
-                resetMenu();
-                tvAttractions.setSelected(true);
-            }
-        });
-    }
-
-    @OnClick(R.id.tv_animation_set_one)
-    public void onTapMenuAnimationSetOne(View view) {
-        resetMenu();
-        tvAnimationSetOne.setSelected(true);
-        hideUserData(new UserDataAnimListener() {
-            @Override
-            public void onFinishHideUserData() {
-                Intent intent = AnimationSetOneActivity.newIntent(getApplicationContext());
-                startActivity(intent);
-
-                resetMenu();
-                tvAttractions.setSelected(true);
-            }
-        });
-    }
-
-    @OnClick(R.id.tv_animation_set_two)
-    public void onTapMenuAnimationSetTwo(View view) {
-        resetMenu();
-        tvAnimationSetTwo.setSelected(true);
-        hideUserData(new UserDataAnimListener() {
-            @Override
-            public void onFinishHideUserData() {
-                Intent intent = AnimationSetTwoActivity.newIntent(getApplicationContext());
                 startActivity(intent);
 
                 resetMenu();
@@ -322,8 +299,6 @@ public class AttractionListActivity extends AppCompatActivity
     private void resetMenu() {
         tvAttractions.setSelected(false);
         tvDrawableAnimation.setSelected(false);
-        tvAnimationSetOne.setSelected(false);
-        tvAnimationSetTwo.setSelected(false);
     }
 
     public interface UserDataAnimListener {

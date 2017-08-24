@@ -1,5 +1,28 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'org.moallemi.advanced-build-version'
+
+advancedVersioning {
+
+    nameOptions {
+        versionMajor 0
+        versionMinor 0
+        versionPatch 2
+    }
+
+    codeOptions {
+        versionCodeType org.moallemi.gradle.internal.VersionCodeType.AUTO_INCREMENT_ONE_STEP
+        dependsOnTasks 'release'
+    }
+
+    outputOptions {
+        renameOutput true
+        nameFormat 'PADC-Animation-Samples-v${versionName}'
+    }
+}
+
+def appVersionName = advancedVersioning.versionName
+def appVersionCode = advancedVersioning.versionCode
 
 android {
     compileSdkVersion 26
@@ -8,14 +31,39 @@ android {
         applicationId "xyz.aungpyaephyo.padc.animation"
         minSdkVersion 18
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode appVersionCode
+        versionName appVersionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String', 'VERY_SENSITIVE_DATA', "\"${verySensitiveData}\""
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+
+        def BUILD_TYPE_FIELD = "APP_BUILD_TYPE";
+        def BUILD_TYPE_PROD = "\"P\"";
+        def BUILD_TYPE_STAGING = "\"S\"";
+        def BUILD_TYPE_DEV = "\"D\"";
+
+        production {
+            applicationId = "xyz.aungpyaephyo.padc.animation"
+            buildConfigField "String", BUILD_TYPE_FIELD, BUILD_TYPE_PROD
+        }
+
+        staging {
+            applicationId = "xyz.aungpyaephyo.padc.animation.staging"
+            buildConfigField "String", BUILD_TYPE_FIELD, BUILD_TYPE_STAGING
+        }
+
+        development {
+            applicationId = "xyz.aungpyaephyo.padc.animation.production"
+            buildConfigField "String", BUILD_TYPE_FIELD, BUILD_TYPE_DEV
         }
     }
 }
