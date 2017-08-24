@@ -1,51 +1,24 @@
-package xyz.aungpyaephyo.padc.animation.activities;
+package xyz.aungpyaephyo.padc.animation.views.pods;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
+import android.widget.FrameLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import xyz.aungpyaephyo.padc.animation.R;
-import xyz.aungpyaephyo.padc.animation.data.models.AttractionsModel;
-import xyz.aungpyaephyo.padc.animation.data.vo.AttractionVO;
-import xyz.aungpyaephyo.padc.animation.utils.AppConstants;
 
 /**
- * Created by aung on 7/29/17.
+ * Created by aung on 2/25/16.
  */
-
-public class AttractionDetailsActivity extends AppCompatActivity {
-
-    private static final String IE_USER_TAP_ATTRACTION_TITLE = "IE_USER_TAP_ATTRACTION_TITLE";
-
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-
-    @BindView(R.id.iv_attraction)
-    ImageView ivAttraction;
-
-    @BindView(R.id.collapsing_toolbar_layout)
-    CollapsingToolbarLayout collapsingToolbarLayout;
-
-    @BindView(R.id.tv_attraction_desc)
-    TextView tvAttractionDesc;
+public class FabsViewPod extends FrameLayout {
 
     @BindView(R.id.fab_plus)
     FloatingActionButton fabPlus;
@@ -59,59 +32,24 @@ public class AttractionDetailsActivity extends AppCompatActivity {
     @BindView(R.id.fab_viber)
     FloatingActionButton fabViber;
 
+    private FabsController controller;
+
     private boolean isOpen = false;
 
-    public static Intent newIntent(Context context, AttractionVO attraction) {
-        Intent intent = new Intent(context, AttractionDetailsActivity.class);
-        intent.putExtra(IE_USER_TAP_ATTRACTION_TITLE, attraction.getTitle());
-        return intent;
+    public FabsViewPod(Context context) {
+        super(context);
     }
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_attraction_details);
-        ButterKnife.bind(this, this);
-
-        setSupportActionBar(toolbar);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            ivAttraction.setTransitionName(getString(R.string.detail_transition_name));
-        }
-
-        Intent usedIntent = getIntent();
-        Bundle bundle = usedIntent.getExtras();
-        if (bundle != null) {
-            String attractionTitle = bundle.getString(IE_USER_TAP_ATTRACTION_TITLE);
-            AttractionVO tappedAttraction = AttractionsModel.getInstance().getAttractionByTitle(attractionTitle);
-
-            bindData(tappedAttraction);
-        }
+    public FabsViewPod(Context context, AttributeSet attrs) {
+        super(context, attrs);
     }
 
-    @OnClick(R.id.fab_plus)
-    public void onTapFabPlus(View view) {
-        if (!isOpen) {
-            openAnim();
-            isOpen = true;
-        } else {
-            closeAnim();
-            isOpen = false;
-        }
-    }
-
-    private void bindData(AttractionVO tappedAttraction) {
-        collapsingToolbarLayout.setTitle(tappedAttraction.getTitle());
-        tvAttractionDesc.setText(tappedAttraction.getDesc());
-
-        Glide.with(ivAttraction.getContext())
-                .load(AppConstants.BASE_IMAGE_PATH + tappedAttraction.getImages()[0])
-                .placeholder(R.drawable.placeholder_attraction_image)
-                .into(ivAttraction);
+    public FabsViewPod(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
     }
 
     private void openAnim() {
-        ObjectAnimator objAnimRotation = ObjectAnimator.ofFloat(fabPlus, "rotation", 720f, 0f);
+        ObjectAnimator objAnimRotation = ObjectAnimator.ofFloat(fabPlus, "rotation", 540f, 0f);
         objAnimRotation.setDuration(600);
         objAnimRotation.setInterpolator(new AccelerateInterpolator());
         objAnimRotation.start();
@@ -167,7 +105,7 @@ public class AttractionDetailsActivity extends AppCompatActivity {
     }
 
     private void closeAnim() {
-        ObjectAnimator objAnimRotation = ObjectAnimator.ofFloat(fabPlus, "rotation", 0, 720f);
+        ObjectAnimator objAnimRotation = ObjectAnimator.ofFloat(fabPlus, "rotation", 0, 540f);
         objAnimRotation.setDuration(600);
         objAnimRotation.setInterpolator(new AccelerateInterpolator());
         objAnimRotation.start();
@@ -220,5 +158,52 @@ public class AttractionDetailsActivity extends AppCompatActivity {
         asMapBW.play(objAnimMapYBW).with(objAnimMapXBW);
         asMapBW.setStartDelay(100);
         asMapBW.start();
+    }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        ButterKnife.bind(this, this);
+    }
+
+    @OnClick(R.id.fab_plus)
+    public void onTapFabPlus(View view) {
+        if (!isOpen) {
+            openAnim();
+            isOpen = true;
+        } else {
+            closeAnim();
+            isOpen = false;
+        }
+    }
+
+    @OnClick(R.id.fab_sms)
+    public void onTapFabSms(View view) {
+        if (controller != null) {
+            controller.onTapSms();
+        }
+
+    }
+
+    @OnClick(R.id.fab_fb_messenger)
+    public void onTapFabFbMessenger(View view) {
+        if (controller != null) {
+            controller.onTapFbMessenger();
+        }
+    }
+
+    @OnClick(R.id.fab_viber)
+    public void onTapFabViber(View view) {
+        if (controller != null) {
+            controller.onTapViber();
+        }
+    }
+
+    public interface FabsController {
+        void onTapSms();
+
+        void onTapFbMessenger();
+
+        void onTapViber();
     }
 }
