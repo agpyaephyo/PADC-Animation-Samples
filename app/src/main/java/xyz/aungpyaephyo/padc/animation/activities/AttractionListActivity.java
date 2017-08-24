@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -61,6 +62,12 @@ public class AttractionListActivity extends AppCompatActivity
     @BindView(R.id.coordinatorLayout)
     CoordinatorLayout coordinatorLayout;
 
+    @BindView(R.id.tv_attractions)
+    TextView tvAttractions;
+
+    @BindView(R.id.tv_drawable_animation)
+    TextView tvDrawableAnimation;
+
     private AttractionsAdapter mAttractionsAdapter;
 
     private float mWidthPx, mHeightPx;
@@ -84,6 +91,8 @@ public class AttractionListActivity extends AppCompatActivity
         mAttractionsAdapter.setNewData(AttractionsModel.getInstance().getAttractions());
 
         initUserDataPosition();
+
+        tvAttractions.setSelected(true);
     }
 
     @Override
@@ -152,6 +161,34 @@ public class AttractionListActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
+    }
+
+    @OnClick(R.id.tv_attractions)
+    public void onTapMenuAttractions(View view) {
+        resetMenu();
+        tvAttractions.setSelected(true);
+        hideUserData();
+    }
+
+    @OnClick(R.id.tv_drawable_animation)
+    public void onTapMenuDrawableAnimation(View view) {
+        resetMenu();
+        tvDrawableAnimation.setSelected(true);
+        hideUserData(new UserDataAnimListener() {
+            @Override
+            public void onFinishHideUserData() {
+                Intent intent = DrawableAnimationActivity.newIntent(getApplicationContext());
+                startActivity(intent);
+
+                resetMenu();
+                tvAttractions.setSelected(true);
+            }
+        });
+    }
+
+    @OnClick(R.id.vp_user_data)
+    public void onTapUserData(View view) {
+        hideUserData();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -242,6 +279,11 @@ public class AttractionListActivity extends AppCompatActivity
         mDensity = getResources().getDisplayMetrics().density;
         mWidthPx = outMetrics.widthPixels;
         mHeightPx = outMetrics.heightPixels;
+    }
+
+    private void resetMenu() {
+        tvAttractions.setSelected(false);
+        tvDrawableAnimation.setSelected(false);
     }
 
     public interface UserDataAnimListener {
