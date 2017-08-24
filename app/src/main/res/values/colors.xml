@@ -15,4 +15,6 @@
 
     <color name="black_ish">#111</color>
     <color name="black_full">#F000</color>
+    <color name="black_overlay_light">#6000</color>
+    <color name="black_overlay">#9000</color>
 </resources>
