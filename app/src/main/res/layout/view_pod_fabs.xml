@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xyz.aungpyaephyo.padc.animation.views.pods.FabsViewPod
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_sms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_sms_24dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_fb_messenger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_facebook_messenger" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_viber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_viber" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_share_24dp" />
+
+</xyz.aungpyaephyo.padc.animation.views.pods.FabsViewPod>
