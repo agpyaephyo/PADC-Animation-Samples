@@ -15,13 +15,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import xyz.aungpyaephyo.padc.animation.R;
 import xyz.aungpyaephyo.padc.animation.adapters.AttractionsAdapter;
 import xyz.aungpyaephyo.padc.animation.components.rvset.SmartRecyclerView;
+import xyz.aungpyaephyo.padc.animation.data.models.AttractionsModel;
 import xyz.aungpyaephyo.padc.animation.data.vo.AttractionVO;
+import xyz.aungpyaephyo.padc.animation.events.APIEvents;
 import xyz.aungpyaephyo.padc.animation.views.holders.AttractionViewHolder;
 import xyz.aungpyaephyo.padc.animation.views.pods.EmptyViewPod;
 
@@ -55,6 +61,8 @@ public class AttractionListActivity extends AppCompatActivity
         mAttractionsAdapter = new AttractionsAdapter(getApplicationContext(), this);
         rvAttractions.setAdapter(mAttractionsAdapter);
         rvAttractions.setEmptyView(vpEmptyAttractions);
+
+        mAttractionsAdapter.setNewData(AttractionsModel.getInstance().getAttractions());
     }
 
     @Override
@@ -79,6 +87,18 @@ public class AttractionListActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
     @OnClick(R.id.fab)
     public void onTapFab(View view) {
         Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -96,5 +116,15 @@ public class AttractionListActivity extends AppCompatActivity
         } else {
             startActivity(intent);
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onAttractionsLoaded(APIEvents.AttractionsLoadedEvent event) {
+        mAttractionsAdapter.setNewData(event.getAttractionList());
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onErrorLoadingAttractions(APIEvents.ErrorLoadingAttractionsEvent event) {
+        Snackbar.make(rvAttractions, "Error on loading attractions." + event.getErrorMsg(), Snackbar.LENGTH_INDEFINITE).show();
     }
 }

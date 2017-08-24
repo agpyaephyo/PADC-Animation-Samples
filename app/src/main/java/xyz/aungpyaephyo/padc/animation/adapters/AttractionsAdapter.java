@@ -29,11 +29,6 @@ public class AttractionsAdapter extends BaseRecyclerAdapter<AttractionViewHolder
 
     @Override
     public void onBindViewHolder(AttractionViewHolder holder, int position) {
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return 15;
+        holder.bind(mData.get(position));
     }
 }
