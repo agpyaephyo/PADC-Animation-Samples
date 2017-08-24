@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fl_user_data_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_overlay_light">
+
+    <RelativeLayout
+        android:layout_width="@dimen/login_user_info_width"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:background="@color/white_ish">
+
+        <include
+            android:id="@+id/vp_login_user"
+            layout="@layout/view_pod_login_user"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/login_user_info_height"
+            android:visibility="gone"
+            />
+
+        <include
+            android:id="@+id/vp_before_login"
+            layout="@layout/view_pod_before_login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/login_user_info_height"
+            />
+
+        <TextView
+            android:id="@+id/tv_app_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/primary"
+            android:fontFamily="sans-serif-light"
+            android:gravity="right|end"
+            android:padding="@dimen/margin_medium"
+            android:textColor="@color/white_full"
+            android:textSize="@dimen/text_regular"
+            android:text="PADC-Animation-Sample v0.0.1"
+            />
+
+    </RelativeLayout>
+
+</FrameLayout>

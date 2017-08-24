@@ -41,4 +41,8 @@
     <dimen name="toolbar_margin">0dp</dimen>
     <dimen name="items_photo_size">150dp</dimen>
     <dimen name="margin_spinner_label">21dp</dimen>
+    <dimen name="login_user_info_width">280dp</dimen>
+    <dimen name="login_user_info_height">180dp</dimen>
+    <dimen name="user_profile_image_size_large">90dp</dimen>
+    <dimen name="login_user_name_margin_top">16dp</dimen>
 </resources>
